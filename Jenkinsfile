@@ -1,14 +1,16 @@
 pipeline{
-    agent{
-        docker {
-            image 'maven:3.3.3'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent any
     stages{
+        stage ("----------------Cleaning up workspace"){
+            sh "rm -rf /var/jenkins_home/workspaces/ObjectServer"
+        }
+        stage ("--------------- Download source code"){
+            echo "Downloading code"
+        }
         stage("Build"){
             steps{
-                sh 'mvn -B -DskipTests clean package'
+                echo "----------------Creating .war file"
+                sh 'java -cvf ObjectServer.war *'
             }
             post{
                 always{
@@ -22,48 +24,48 @@ pipeline{
                 }
             }
         }
-        stage("Test"){
-            steps{
-                sh 'mvn test'
-            }
-             post{
-                always{
-                    echo "====++++Comprobando Test++++===="
-                }
-                success{
-                    echo "====++++Test executed succesfully++++===="
-                }
-                failure{
-                    echo "====++++Test execution failed++++===="
-                }
+        // stage("Test"){
+        //     steps{
+        //         sh 'mvn test'
+        //     }
+        //      post{
+        //         always{
+        //             echo "====++++Comprobando Test++++===="
+        //         }
+        //         success{
+        //             echo "====++++Test executed succesfully++++===="
+        //         }
+        //         failure{
+        //             echo "====++++Test execution failed++++===="
+        //         }
         
-            }
-        }
-        stage("Deploy"){
-            steps{
-                deploy adapters: [tomcat9(credentialsId: '9d8ae760-8d72-4879-8c98-926c418f7450',
-                path: '', url: 'http://localhost:9090/')],
-                contextPath: '/war',
-                war: '"**/*.war"'
-            }
-            post{
-                always{
-                    echo "====++++Comprobabando Deploy++++===="
-                }
-                success{
-                    echo "====++++Deploy executed succesfully++++===="
-                }
-                failure{
-                    echo "====++++Deploy execution failed++++===="
-                }
+        //     }
+        // }
+        // stage("Deploy"){
+        //     steps{
+        //         deploy adapters: [tomcat9(credentialsId: '9d8ae760-8d72-4879-8c98-926c418f7450',
+        //         path: '', url: 'http://localhost:9090/')],
+        //         contextPath: '/war',
+        //         war: '"**/*.war"'
+        //     }
+        //     post{
+        //         always{
+        //             echo "====++++Comprobabando Deploy++++===="
+        //         }
+        //         success{
+        //             echo "====++++Deploy executed succesfully++++===="
+        //         }
+        //         failure{
+        //             echo "====++++Deploy execution failed++++===="
+        //         }
         
-            }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-            }
-        }
+        //     }
+        // }
+        // stage('Deliver') { 
+        //     steps {
+        //         sh './jenkins/scripts/deliver.sh' 
+        //     }
+        // }
     }
     post{
         always{
