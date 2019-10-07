@@ -52,18 +52,17 @@ pipeline{
                 contextPath: null,
                 war: 'ObjectServer.war'
             }
-            post{
-                always{
-                    echo "====++++Comprobabando Deploy++++===="
-                }
-                success{
-                    echo "====++++Deploy executed succesfully++++===="
-                }
-                failure{
-                    echo "====++++Deploy execution failed++++===="
-                }
-        
-        //     }
+            // post{
+            //     always{
+            //         echo "====++++Comprobabando Deploy++++===="
+            //     }
+            //     success{
+            //         echo "====++++Deploy executed succesfully++++===="
+            //     }
+            //     failure{
+            //         echo "====++++Deploy execution failed++++===="
+            //     }        
+        }
         // }
         // stage('Deliver') { 
         //     steps {
@@ -71,15 +70,15 @@ pipeline{
         //     }
         // }
     }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
-    }
+    // post{
+    //     always{
+    //         echo "========always========"
+    //     }
+    //     success{
+    //         echo "========pipeline executed successfully ========"
+    //     }
+    //     failure{
+    //         echo "========pipeline execution failed========"
+    //     }
+    // }
 }
