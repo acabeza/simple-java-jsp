@@ -1,14 +1,14 @@
 pipeline{
     agent{
         docker {
-            image 'java'
+            image 'maven:3.3.3'
             args '-v /root/.m2:/root/.m2'
         }
     }
     stages{
         stage("Build"){
             steps{
-                sh 'javac -B -DskipTests clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
             post{
                 always{
@@ -24,7 +24,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                sh 'javac test'
+                sh 'mvn test'
             }
              post{
                 always{
