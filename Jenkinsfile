@@ -2,10 +2,14 @@ pipeline{
     agent any
     stages{
         stage ("----------------Cleaning up workspace"){
-            sh "rm -rf /var/jenkins_home/workspaces/ObjectServer"
+            steps{
+                sh "rm -rf /var/jenkins_home/workspaces/ObjectServer"
+            }
         }
         stage ("--------------- Download source code"){
-            echo "Downloading code"
+            steps{
+                echo "Downloading code"
+            }            
         }
         stage("Build"){
             steps{
