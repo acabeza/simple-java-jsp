@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                sh 'java -B -DskipTests clean package'
+                sh 'make -B -DskipTests clean package'
             }
             post{
                 always{
@@ -24,7 +24,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                sh 'java test'
+                sh 'make test'
             }
              post{
                 always{
