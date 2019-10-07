@@ -14,7 +14,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "----------------Creating .war file"
-                sh 'java -cvf ObjectServer.war *'
+                sh 'jar -cvf ObjectServer.war *'
             }
             post{
                 always{
