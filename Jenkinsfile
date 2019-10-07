@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                sh 'mvn -B -DskipTests clean package'
+                sh 'java -B -DskipTests clean package'
             }
             post{
                 always{
@@ -24,7 +24,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                sh 'mvn test'
+                sh 'java test'
             }
              post{
                 always{
