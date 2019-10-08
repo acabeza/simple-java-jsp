@@ -47,7 +47,7 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-                COPY '/var/jenkins_home/workspace/ObjectServer/ObjectServer.war /usr/local/apache2/htdocs' 
+                COPY '/var/jenkins_home/workspace/ObjectServer/ObjectServer.war' '/usr/local/apache2/htdocs' 
             }
             // post{
             //     always{
