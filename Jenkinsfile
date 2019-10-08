@@ -47,8 +47,7 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-                deploy adapters: [(credentialsId: '6300825b-4bfd-4063-8114-69b9520a36dd',
-                url: 'http://localhost:9595')],
+                deploy adapters: [(url: 'http://localhost:9595')],
                 contextPath: '/simple-java-jsp',
                 war: 'ObjectServer.war'
             }
