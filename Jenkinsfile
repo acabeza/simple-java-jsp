@@ -48,7 +48,7 @@ pipeline{
         stage("Deploy"){
             steps{
                 deploy adapters: [tomcat9(credentialsId: '50a9587a-e392-4982-b2ac-6cee3d3d0e54',
-                path: '/manager/text/deploy?', url: 'http://localhost:9090')],
+                path: '', url: 'http://localhost:9090')],
                 contextPath: '',
                 war: 'ObjectServer.war'
             }
