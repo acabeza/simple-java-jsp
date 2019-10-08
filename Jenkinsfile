@@ -47,9 +47,7 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-                deploy url: 'http://localhost:9595',
-                contextPath: '/simple-java-jsp',
-                war: 'ObjectServer.war'
+                cp '/var/jenkins_home/workspace/ObjectServer/ObjectServer.war /usr/local/apache2/htdocs' 
             }
             // post{
             //     always{
