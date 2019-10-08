@@ -47,7 +47,7 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-                deploy adapters: [(url: 'http://localhost:9595')],
+                deploy url: 'http://localhost:9595',
                 contextPath: '/simple-java-jsp',
                 war: 'ObjectServer.war'
             }
