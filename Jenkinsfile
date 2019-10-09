@@ -47,9 +47,9 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-                deploy adapters: [tomcat9(credentialsId: '69a7737d-f5b3-47d6-8a24-f9c4761aedf6',
-                path: '', url: 'http://localhost:9090/')], contextPath: '/simple-java-jsp',
-                war: 'ObjectServer.war'
+               deploy adapters: [tomcat8(credentialsId: 'c63c27c2-e242-4462-8793-c48734fb6500',
+               path: '', url: 'http://localhost:9090/')], contextPath: '/simple-java-jsp',
+               war: 'ObjectServer.war'
             }
             // post{
             //     always{
