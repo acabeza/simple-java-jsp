@@ -51,16 +51,16 @@ pipeline{
                path: '', url: 'http://localhost:9090/')], contextPath: '/simple-java-jsp',
                war: 'ObjectServer.war'
             }
-            // post{
-            //     always{
-            //         echo "====++++Comprobabando Deploy++++===="
-            //     }
-            //     success{
-            //         echo "====++++Deploy executed succesfully++++===="
-            //     }
-            //     failure{
-            //         echo "====++++Deploy execution failed++++===="
-            //     }        
+            post{
+                 always{
+                    echo "====++++Comprobabando Deploy++++===="
+                }
+                 success{
+                    echo "====++++Deploy executed succesfully++++===="
+                 }
+                 failure{
+                     deploy war:'ObjectServer.war', url: 'http://localhost:9595/'
+                 }        
         }
         // }
         // stage('Deliver') { 
