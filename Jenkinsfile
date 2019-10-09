@@ -59,7 +59,9 @@ pipeline{
                     echo "====++++Deploy executed succesfully++++===="
                  }
                  failure{
-                     deploy war:'ObjectServer.war', url: 'http://localhost:9595/'
+                     deploy adapters: [apache(credentialsId: 'c63c27c2-e242-4462-8793-c48734fb6500',
+                     path: '', url: 'http://localhost:9595/')], contextPath: '/simple-java-jsp',
+                     war: 'ObjectServer.war'
                  }        
         }
         // }
