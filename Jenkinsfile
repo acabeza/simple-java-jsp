@@ -47,7 +47,7 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-               cp "./ObjectSever.war C:\Users\acabezam\composetest\compose-jenkins-tomcat\tomcat\webapps"
+               COPY "./ObjectSever.war" "C:\Users\acabezam\composetest\compose-jenkins-tomcat\tomcat\webapps"
             }
             post{
                  always{
