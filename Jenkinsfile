@@ -47,8 +47,8 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-               deploy adapters: [tomcat8(credentialsId: 'd1934282-b656-42bb-8b7d-bdb918588101',
-               path: '', url: 'C:\\Users\\acabezam\\composetest\\compose-jenkins-tomcat\\tomcat\\webapps')],
+               deploy adapters: [tomcat8(credentialsId: 'afcb1825-369d-4250-99ec-7cc59fe7fb77',
+               path: '', url: 'http://localhost:9090/')],
                contextPath: '/simple-java-jsp', war: 'ObjectServer.war'
             }
             post{
