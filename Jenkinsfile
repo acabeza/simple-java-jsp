@@ -48,7 +48,7 @@ pipeline{
         stage("Deploy"){
             steps{
                deploy adapters: [tomcat8(credentialsId: 'afcb1825-369d-4250-99ec-7cc59fe7fb77',
-               path: '', url: ' http://4b2d8dbe.ngrok.io')],
+               path: '', url: ' http://84534284.ngrok.io')],
                contextPath: '/simple-java-jsp', war: 'ObjectServer.war'
             }
             post{
