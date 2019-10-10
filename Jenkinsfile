@@ -47,7 +47,8 @@ pipeline{
         // }
         stage("Deploy"){
             steps{
-               bat("xcopy ObjectSever.war C:\\Users\\acabezam\\composetest\\compose-jenkins-tomcat\\tomcat\\webapps /O /X /E /H /K")
+                script
+               bat("bat label: '', script: 'xcopy ObjectSever.war C:\\Users\\acabezam\\composetest\\compose-jenkins-tomcat\\tomcat\\webapps /O /X /E /H /K'")
             }
             post{
                  always{
