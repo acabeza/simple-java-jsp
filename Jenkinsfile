@@ -1,5 +1,8 @@
 pipeline{
-    agent any
+    agent docker{
+        image 'maven:3.6.2-jdk-11-slim'
+        args '-v /root/.m2:/root/.m2'
+    }
     stages{
         stage ("----------------Cleaning up workspace"){
             steps{
@@ -14,7 +17,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "----------------Creating .war file"
-                sh 'jar -cvf ObjectServer.war *'
+                sh 'mvn clean'
             }
             post{
                 always{
@@ -48,7 +51,7 @@ pipeline{
         stage("Deploy"){
             steps{
                deploy adapters: [tomcat8(credentialsId: 'd9981447-eee8-444c-9a93-410d6f6f64c1',
-               path: '', url: 'http://bd8278e8.ngrok.io')],
+               path: '', url: 'http://8bdc6908.ngrok.io')],
                contextPath: '/simple-java-jsp', war: 'ObjectServer.war'
             }
             post{
