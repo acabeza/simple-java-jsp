@@ -40,6 +40,7 @@ pipeline{
                 post{
                     always{
                         echo "====++++Comprobando Test++++===="
+                        junit 'target/surefire-reports/*.xml'
                     }
                     success{
                         echo "====++++Test executed succesfully++++===="
@@ -49,6 +50,20 @@ pipeline{
                     }
             
                 }
+            }
+            stage("Create javadoc"){
+                sh 'mvn javadoc:javadoc'
+                post{
+                        always{
+                            echo "====++++Comprobabando Deploy++++===="
+                        }
+                        success{
+                            echo "====++++Deploy executed succesfully++++===="
+                        }
+                        failure{
+                            echo "====+++Deploy Error+++==="
+                        }        
+                    }
             }
             stage("Deploy"){
                 steps{
@@ -68,6 +83,6 @@ pipeline{
                         }        
                     }
             }
-            
+
     }
 }
