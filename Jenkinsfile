@@ -50,22 +50,6 @@ pipeline{
             
                 }
             }
-            stage("Create javadoc"){
-                steps{
-                    sh 'mvn javadoc:javadoc'
-                }
-                post{
-                        always{
-                            echo "====++++Comprobabando Deploy++++===="
-                        }
-                        success{
-                            echo "====++++Deploy executed succesfully++++===="
-                        }
-                        failure{
-                            echo "====+++Deploy Error+++==="
-                        }        
-                    }
-            }
             stage("Deploy"){
                 steps{
                 deploy adapters: [tomcat8(credentialsId: 'd9981447-eee8-444c-9a93-410d6f6f64c1',
