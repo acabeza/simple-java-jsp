@@ -6,16 +6,16 @@ pipeline{
             }
         }
     stages{
-        stage ("----------------Cleaning up workspace"){
-            steps{
-                sh "rm -rf /var/jenkins_home/workspaces/ObjectServer"
-            }
-        }
-        stage ("--------------- Download source code"){
-            steps{
-                echo "Downloading code"
-            }            
-        }
+                stage ("----------------Cleaning up workspace"){
+                    steps{
+                        sh "rm -rf /var/jenkins_home/workspaces/ObjectServer"
+                    }
+                }
+                stage ("--------------- Download source code"){
+                    steps{
+                        echo "Downloading code"
+                    }            
+                }
         stage("Build"){
             steps{
                 echo "----------------Creating .war file"
@@ -33,23 +33,23 @@ pipeline{
                 }
             }
         }
-        // stage("Test"){
-        //     steps{
-        //         sh 'mvn test'
-        //     }
-        //      post{
-        //         always{
-        //             echo "====++++Comprobando Test++++===="
-        //         }
-        //         success{
-        //             echo "====++++Test executed succesfully++++===="
-        //         }
-        //         failure{
-        //             echo "====++++Test execution failed++++===="
-        //         }
+         stage("Test"){
+             steps{
+                 sh 'mvn test'
+             }
+              post{
+                 always{
+                     echo "====++++Comprobando Test++++===="
+                }
+                 success{
+                     echo "====++++Test executed succesfully++++===="
+                 }
+                 failure{
+                     echo "====++++Test execution failed++++===="
+                 }
         
-        //     }
-        // }
+            }
+         }
         stage("Deploy"){
             steps{
                deploy adapters: [tomcat8(credentialsId: 'd9981447-eee8-444c-9a93-410d6f6f64c1',
@@ -67,23 +67,11 @@ pipeline{
                      echo "====+++Deploy Error+++==="
                  }        
         }
-        // }
-        // stage('Deliver') { 
-        //     steps {
-        //         sh './jenkins/scripts/deliver.sh' 
-        //     }
-        // }
+        }
+         stage('Deliver') { 
+             steps {
+                 sh './jenkins/scripts/deliver.sh' 
+            }
+         }
     }
-    // post{
-    //     always{
-    //         echo "========always========"
-    //     }
-    //     success{
-    //         echo "========pipeline executed successfully ========"
-    //     }
-    //     failure{
-    //         echo "========pipeline execution failed========"
-    //     }
-    // }
-}
 }
