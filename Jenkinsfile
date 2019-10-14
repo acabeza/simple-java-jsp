@@ -52,7 +52,9 @@ pipeline{
                 }
             }
             stage("Create javadoc"){
-                sh 'mvn javadoc:javadoc'
+                steps{
+                    sh 'mvn javadoc:javadoc'
+                }
                 post{
                         always{
                             echo "====++++Comprobabando Deploy++++===="
