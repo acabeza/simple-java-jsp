@@ -20,7 +20,7 @@ pipeline{
             steps{
                 echo "----------------Creating .war file"
                 sh 'mvn -B -DskipTests clean package'
-                cd '/target'
+                sh 'cd /target'
             }
             post{
                 always{
