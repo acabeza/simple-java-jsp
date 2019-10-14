@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ObjectServer2</groupId>
   <artifactId>ObjectServer2</artifactId>
-  <version>ObjectWar</version>
+  <version>1.0.0</version>
   <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
