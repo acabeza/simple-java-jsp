@@ -53,7 +53,7 @@ pipeline{
             stage("Deploy"){
                 steps{
                 deploy adapters: [tomcat8(credentialsId: 'a1a2db18-46a5-41f0-a437-6a113be91ac6',
-                path: '', url: 'http://localhost/tomcat')],
+                path: '', url: 'http://tomcat:8080')],
                 contextPath: '/simple-java-jsp', war: '**/ObjectServer2-1.0.0.war'
                 }
                     post{
