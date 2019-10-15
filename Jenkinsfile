@@ -16,7 +16,7 @@ pipeline{
                         echo "Downloading code"
                     }            
             }
-            stage("Build"){
+           /* stage("Build"){
                 steps{
                     echo "----------------Creating .war file"
                     sh 'mvn -B -DskipTests clean package'
@@ -32,8 +32,8 @@ pipeline{
                         echo "========Build execution failed========"
                     }
                 }
-            }
-            stage("Test"){
+            }*/
+            /*stage("Test"){
                 steps{
                     sh 'mvn test'
                 }
@@ -49,7 +49,7 @@ pipeline{
                     }
             
                 }
-            }
+            }*/
             stage("Deploy"){
                 steps{
                 deploy adapters: [tomcat8(credentialsId: 'a1a2db18-46a5-41f0-a437-6a113be91ac6',
